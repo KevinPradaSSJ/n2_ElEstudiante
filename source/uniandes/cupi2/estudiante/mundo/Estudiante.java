@@ -99,7 +99,7 @@ public class Estudiante
         curso2 = new Curso( "MATE1203", "Cálculo diferencial", 3, Departamento.MATEMATICAS );
         curso3 = new Curso( "FISI1100", "Física 1", 4, Departamento.FISICA );
         curso4 = new Curso( "BIOL1405", "Biología celular", 4, Departamento.BIOLOGIA );
-        semestre = 3;
+        semestre = 0;
         promedio = 0.0;
         salario = 0;
     }
@@ -343,7 +343,7 @@ public class Estudiante
     public int calcularSalario() {
     	
     	if (semestre >= 8) {
-    		salario = 5000;
+    		salario = 50000;
     	} else if (semestre >= 4 && semestre <= 7) {
     		salario = (promedio >= 4.5) ? 35000 : 25000;
     	} else if (semestre >= 1 && semestre <= 3) {
@@ -356,6 +356,25 @@ public class Estudiante
     
     public int darSalario() {
     	return salario;
+    }
+    
+    public double mejorNota() {
+    	
+    	double mejor = -1;
+    	
+    	if (curso1.estaCalificado() && curso1.darNota() > mejor) {
+    		mejor = curso1.darNota();
+    	}
+    	if (curso2.estaCalificado() && curso2.darNota() > mejor){
+    		mejor = curso2.darNota();
+    	} 
+    	if (curso3.estaCalificado() && curso3.darNota() > mejor) {
+    		mejor = curso3.darNota();
+    	}
+    	if (curso4.estaCalificado() && curso4.darNota() > mejor) {
+    		mejor = curso4.darNota();  
+    	}
+    	return mejor;
     }
     
     
@@ -380,6 +399,11 @@ public class Estudiante
      */
     public String metodo2( )
     {
-        return "Respuesta 2";
+        double mejor = mejorNota();
+        if (mejor == -1) {
+        	return "El estudiante no tiene notas asignadas aún";
+        } else {
+        	return "La mejor calificación del estudiante es: " + mejor;
+        }
     }
 }
