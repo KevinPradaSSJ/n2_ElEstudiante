@@ -99,7 +99,7 @@ public class Estudiante
         curso2 = new Curso( "MATE1203", "Cálculo diferencial", 3, Departamento.MATEMATICAS );
         curso3 = new Curso( "FISI1100", "Física 1", 4, Departamento.FISICA );
         curso4 = new Curso( "BIOL1405", "Biología celular", 4, Departamento.BIOLOGIA );
-        semestre = 0;
+        semestre = 3;
         promedio = 0.0;
         salario = 0;
     }
@@ -370,7 +370,8 @@ public class Estudiante
      */
     public String metodo1( )
     {
-        return "Respuesta 1";
+        int salarioCalculado = calcularSalario();
+        return "El salario que ganaría el estudiante como monitor sería de: $" + salarioCalculado;
     }
 
     /**
