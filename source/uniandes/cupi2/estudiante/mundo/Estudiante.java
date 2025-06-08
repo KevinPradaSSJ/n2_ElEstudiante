@@ -69,6 +69,12 @@ public class Estudiante
      * Curso 4 del estudiante.
      */
     private Curso curso4;
+    
+    private int semestre;
+    
+    private double promedio;
+    
+    private int salario;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -93,6 +99,9 @@ public class Estudiante
         curso2 = new Curso( "MATE1203", "Cálculo diferencial", 3, Departamento.MATEMATICAS );
         curso3 = new Curso( "FISI1100", "Física 1", 4, Departamento.FISICA );
         curso4 = new Curso( "BIOL1405", "Biología celular", 4, Departamento.BIOLOGIA );
+        semestre = 0;
+        promedio = 0.0;
+        salario = 0;
     }
 
     // -----------------------------------------------------------------
@@ -160,6 +169,16 @@ public class Estudiante
     public Curso darCurso4( )
     {
         return curso4;
+    }
+    
+    public int darSemetre( )
+    {
+    	return semestre;
+    }
+    
+    public double darPromedio( )
+    {
+    	return promedio;
     }
 
     /**
@@ -320,6 +339,26 @@ public class Estudiante
         }
         return asigno;
     }
+    
+    public int calcularSalario() {
+    	
+    	if (semestre >= 8) {
+    		salario = 5000;
+    	} else if (semestre >= 4 && semestre <= 7) {
+    		salario = (promedio >= 4.5) ? 35000 : 25000;
+    	} else if (semestre >= 1 && semestre <= 3) {
+    		salario = (promedio >= 4.0) ? 25000 : 15000;
+    	} else {
+    		salario = 0;
+    	}
+    	return salario;
+    }
+    
+    public int darSalario() {
+    	return salario;
+    }
+    
+    
 
     // -----------------------------------------------------------------
     // Puntos de Extensión
